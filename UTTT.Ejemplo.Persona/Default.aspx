@@ -7,7 +7,7 @@
     
     <title>Ejemplo MVC </title>
     <link href="controlformato.css" type="text/css" rel="stylesheet" />
-    <script>
+    <script type="text/javascript">
         
         function validar() {
             //obteniendo el valor que se puso en campo text del formulario

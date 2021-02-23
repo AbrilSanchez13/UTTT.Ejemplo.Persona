@@ -15,6 +15,8 @@ namespace UTTT.Ejemplo.Persona.Data.Entity
         private int idCatSexo;
         private CatSexo catSexoTemp;
         private String strValorSexo;
+        
+      
 
         public String StrValorSexo
         {
@@ -51,12 +53,13 @@ namespace UTTT.Ejemplo.Persona.Data.Entity
             get { return strAMaterno; }
             set { strAMaterno = value; }
         }
-        
+      
         public int IdCatSexo
         {
             get { return idCatSexo; }
             set { idCatSexo = value; }
         }
+
 
         public CatSexo CatSexoTemp
         {

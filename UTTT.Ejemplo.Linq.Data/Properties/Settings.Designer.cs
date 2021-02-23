@@ -26,8 +26,7 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql5052.site4now.net;Initial Catalog=DB_A6E0A7_AbrilSanchez13;Persist" +
-            " Security Info=True;User ID=DB_A6E0A7_AbrilSanchez13_admin;Password=1kerbadillO")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5052.site4now.net;Initial Catalog=DB_A6E0A7_AbrilSanchez13;User Id=DB_A6E0A7_AbrilSanchez13_admin;Password=1kerbadillO")]
         public string DB_A6E0A7_AbrilSanchez13ConnectionString {
             get {
                 return ((string)(this["DB_A6E0A7_AbrilSanchez13ConnectionString"]));
