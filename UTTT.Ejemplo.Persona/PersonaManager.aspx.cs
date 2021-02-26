@@ -102,6 +102,8 @@ namespace UTTT.Ejemplo.Persona
                         this.txtCodigoPostal.Text = this.baseEntity.strCodigoPostal;
                         this.txtRfc.Text = this.baseEntity.strRfc;
                         DateTime? fechaNacimiento = this.baseEntity.dteFechaNacimiento;
+                        this.hide.Value = fechaNacimiento.ToString();
+                        
                         if (fechaNacimiento != null)
                         {
                             this.dteCalendar.TodaysDate = (DateTime)fechaNacimiento;
@@ -190,6 +192,26 @@ namespace UTTT.Ejemplo.Persona
                     DateTime fechaNacimiento = this.dteCalendar.SelectedDate.Date;
                     persona.dteFechaNacimiento = fechaNacimiento;
 
+                    String mensaje = String.Empty;
+                    if (!this.validaHTML(ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+                    if (!this.validaSql(ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
+
+                    if (!this.validacion(persona, ref mensaje))
+                    {
+                        this.lblMensaje.Text = mensaje;
+                        this.lblMensaje.Visible = true;
+                        return;
+                    }
                     dcGuardar.SubmitChanges();
                     this.showMessage("El   registro se edito correctamente.");
                     this.Response.Redirect("~/PersonaPrincipal.aspx", false);
@@ -254,14 +276,14 @@ namespace UTTT.Ejemplo.Persona
         }
         protected void dteCalendar_SelectionChanged(object sender, EventArgs e)
         {
-
-            hide.Value = dteCalendar.SelectedDate.ToString();
+               //txtFecha.Text = dteCalendar.SelectedDate.ToString();
+                 hide.Value = dteCalendar.SelectedDate.ToString();
         }
-        #endregion
+            #endregion
 
-        #region Metodos
+            #region Metodos
 
-        public void setItem(ref DropDownList _control, String _value)
+            public void setItem(ref DropDownList _control, String _value)
         {
             foreach (ListItem item in _control.Items)
             {
@@ -275,7 +297,6 @@ namespace UTTT.Ejemplo.Persona
         }
         public bool validacion(UTTT.Ejemplo.Linq.Data.Entity.Persona _persona, ref String _mensaje)
         {
-
             if (_persona.idCatSexo == -1)
             {
                 _mensaje = "Selecciona el sexo";
@@ -375,7 +396,6 @@ namespace UTTT.Ejemplo.Persona
                 _mensaje = "Los caracteres permitidos para RFC rebasan lo establecido";
                 return false;
             }
-
 
             DateTime? fecha = this.baseEntity.dteFechaNacimiento;
             this.hide.Value = fecha.ToString();
