@@ -54,7 +54,7 @@ namespace UTTT.Ejemplo.Persona
 
                 if (!this.IsPostBack)
                 {
-                    if (this.session.Parametros["baseEntity"] == null)
+                    if (this.session.Parametros["baseErntity"] == null)
                     {
                         this.session.Parametros.Add("baseEntity", this.baseEntity);
                     }
@@ -93,10 +93,10 @@ namespace UTTT.Ejemplo.Persona
                     else
                     {
                         this.lblAccion.Text = "Editar";
+                        this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
                         this.txtNombre.Text = this.baseEntity.strNombre;
                         this.txtAPaterno.Text = this.baseEntity.strAPaterno;
                         this.txtAMaterno.Text = this.baseEntity.strAMaterno;
-                        this.txtClaveUnica.Text = this.baseEntity.strClaveUnica;
                         this.txtNumHermanos.Text = this.baseEntity.intNumHermanos.ToString();
                         this.txtEmail.Text = this.baseEntity.strEmail;
                         this.txtCodigoPostal.Text = this.baseEntity.strCodigoPostal;
@@ -129,94 +129,102 @@ namespace UTTT.Ejemplo.Persona
         {
             try
             {
-                DataContext dcGuardar = new DcGeneralDataContext();
-                UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
-                if (this.idPersona == 0)
+                if (!Page.IsValid)
                 {
-                    persona.idCatSexo = int.Parse(this.ddlSexo.Text);
-                    persona.strClaveUnica = this.txtClaveUnica.Text.Trim();
-                    persona.strNombre = this.txtNombre.Text.Trim();
-                    persona.strAMaterno = this.txtAMaterno.Text.Trim();
-                    persona.strAPaterno = this.txtAPaterno.Text.Trim();
-                    persona.intNumHermanos = !this.txtNumHermanos.Text.Equals(String.Empty) ?
-                        int.Parse(this.txtNumHermanos.Text) : 0;
-                    persona.strEmail = this.txtEmail.Text.Trim();
-                    persona.strCodigoPostal = this.txtCodigoPostal.Text.Trim();
-                    persona.strRfc = this.txtRfc.Text.Trim();
-
-                    DateTime fechaNacimiento = this.dteCalendar.SelectedDate.Date;
-                    persona.dteFechaNacimiento = fechaNacimiento;
-
-
-
-                    String mensaje = String.Empty;
-                    if (!this.validaHTML(ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
-                    }
-                    if (!this.validaSql(ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
-                    }
-
-                    if (!this.validacion(persona, ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
-                    }
-                    
-
-                    dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
-                    dcGuardar.SubmitChanges();
-                    this.showMessage("El registro se agrego correctamente.");
-                    this.Response.Redirect("~/PersonaPrincipal.aspx", false);
-
+                    return;
                 }
-                if (this.idPersona > 0)
+
                 {
-                    persona = dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().First(c => c.id == idPersona);
-                    persona.idCatSexo = int.Parse(this.ddlSexo.Text);
-                    persona.strClaveUnica = this.txtClaveUnica.Text.Trim();
-                    persona.strNombre = this.txtNombre.Text.Trim();
-                    persona.strAMaterno = this.txtAMaterno.Text.Trim();
-                    persona.strAPaterno = this.txtAPaterno.Text.Trim();
-                    persona.intNumHermanos = int.Parse(this.txtNumHermanos.Text);
-                    persona.strEmail = this.txtEmail.Text.Trim();
-                    persona.strCodigoPostal = this.txtCodigoPostal.Text.Trim();
-                    persona.strRfc = this.txtRfc.Text.Trim();
-                    DateTime fechaNacimiento = this.dteCalendar.SelectedDate.Date;
-                    persona.dteFechaNacimiento = fechaNacimiento;
+                    DataContext dcGuardar = new DcGeneralDataContext();
+                    UTTT.Ejemplo.Linq.Data.Entity.Persona persona = new Linq.Data.Entity.Persona();
+                    if (this.idPersona == 0)
+                    {
+                        persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+                        persona.strClaveUnica = this.txtClaveUnica.Text.Trim();
+                        persona.strNombre = this.txtNombre.Text.Trim();
+                        persona.strAMaterno = this.txtAMaterno.Text.Trim();
+                        persona.strAPaterno = this.txtAPaterno.Text.Trim();
+                        persona.intNumHermanos = !this.txtNumHermanos.Text.Equals(String.Empty) ?
+                            int.Parse(this.txtNumHermanos.Text) : 0;
+                        persona.strEmail = this.txtEmail.Text.Trim();
+                        persona.strCodigoPostal = this.txtCodigoPostal.Text.Trim();
+                        persona.strRfc = this.txtRfc.Text.Trim();
 
-                    String mensaje = String.Empty;
-                    if (!this.validaHTML(ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
-                    }
-                    if (!this.validaSql(ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
-                    }
+                        DateTime fechaNacimiento = this.dteCalendar.SelectedDate.Date;
+                        persona.dteFechaNacimiento = fechaNacimiento;
 
-                    if (!this.validacion(persona, ref mensaje))
-                    {
-                        this.lblMensaje.Text = mensaje;
-                        this.lblMensaje.Visible = true;
-                        return;
+
+
+                        String mensaje = String.Empty;
+                        if (!this.validaHTML(ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+                        if (!this.validaSql(ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+
+                        if (!this.validacion(persona, ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+
+
+                        dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().InsertOnSubmit(persona);
+                        dcGuardar.SubmitChanges();
+                        this.showMessage("El registro se agrego correctamente.");
+                        this.Response.Redirect("~/PersonaPrincipal.aspx", false);
+
                     }
-                    dcGuardar.SubmitChanges();
-                    this.showMessage("El   registro se edito correctamente.");
-                    this.Response.Redirect("~/PersonaPrincipal.aspx", false);
+                    if (this.idPersona > 0)
+                    {
+                        persona = dcGuardar.GetTable<UTTT.Ejemplo.Linq.Data.Entity.Persona>().First(c => c.id == idPersona);
+                        persona.idCatSexo = int.Parse(this.ddlSexo.Text);
+                        persona.strClaveUnica = this.txtClaveUnica.Text.Trim();
+                        persona.strNombre = this.txtNombre.Text.Trim();
+                        persona.strAMaterno = this.txtAMaterno.Text.Trim();
+                        persona.strAPaterno = this.txtAPaterno.Text.Trim();
+                        persona.intNumHermanos = int.Parse(this.txtNumHermanos.Text);
+                        persona.strEmail = this.txtEmail.Text.Trim();
+                        persona.strCodigoPostal = this.txtCodigoPostal.Text.Trim();
+                        persona.strRfc = this.txtRfc.Text.Trim();
+                        DateTime fechaNacimiento = this.dteCalendar.SelectedDate.Date;
+                        persona.dteFechaNacimiento = fechaNacimiento;
+
+                        String mensaje = String.Empty;
+                        if (!this.validaHTML(ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+                        if (!this.validaSql(ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+
+                        if (!this.validacion(persona, ref mensaje))
+                        {
+                            this.lblMensaje.Text = mensaje;
+                            this.lblMensaje.Visible = true;
+                            return;
+                        }
+                        dcGuardar.SubmitChanges();
+                        this.showMessage("El registro se edito correctamente");
+                        this.Response.Redirect("~/PersonaPrincipal.aspx", false);
+                    }
                 }
             }
+
             catch (Exception _e)
             {
                 //Manejo envió de correos electrónicos al ocurrir una excepción y se enviara los datos de la excepción
