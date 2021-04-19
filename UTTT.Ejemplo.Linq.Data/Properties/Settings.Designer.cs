@@ -12,7 +12,7 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,10 +26,31 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5052.site4now.net;Initial Catalog=DB_A6E0A7_AbrilSanchez13;User Id=DB_A6E0A7_AbrilSanchez13_admin;Password=1kerbadillO")]
-        public string DB_A6E0A7_AbrilSanchez13ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CNTPVE2;Initial Catalog=Persona;Integrated Security=True")]
+        public string PersonaConnectionString {
             get {
-                return ((string)(this["DB_A6E0A7_AbrilSanchez13ConnectionString"]));
+                return ((string)(this["PersonaConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5103.site4now.net;Initial Catalog=DB_A71AFC_abrilsanchez;Persit Se" +
+            "curity Info=True; User Id=DB_A71AFC_abrilsanchez_admin;Password=1KERbadill0")]
+        public string DB_A71AFC_abrilsanchezConnectionString {
+            get {
+                return ((string)(this["DB_A71AFC_abrilsanchezConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Persona;Integrated Security=True")]
+        public string PersonaConnectionString1 {
+            get {
+                return ((string)(this["PersonaConnectionString1"]));
             }
         }
     }

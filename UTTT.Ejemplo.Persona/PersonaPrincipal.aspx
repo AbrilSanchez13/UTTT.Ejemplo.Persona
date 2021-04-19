@@ -5,54 +5,64 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    
-    <div style="color: #000000; font-size: medium; font-family: Arial; font-weight: bold">    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-        Persona</div>
-    <div>
-
-
-    <p>
-        Normbre:&nbsp;&nbsp;&nbsp;
-
-        <asp:TextBox ID="txtNombre" runat="server" Width="174px" 
-            ViewStateMode="Disabled"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
-            onclick="btnBuscar_Click" ViewStateMode="Disabled" />
-        &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" 
-            onclick="btnAgregar_Click" ViewStateMode="Disabled" />
-    </p>
+         <form id="form1" runat="server">
+       <div class="container-fluid bg-success">
+        <nav class="navbar navbar-dark bg-green">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">UTTT</a>
+                   <a type="submit" name="btnPersona" href="PantallaPrincipal.aspx" class="btn btn-outline-dark">Atras</a>
+                </div>
+        </nav>
     </div>
-    <div>
-    
-        Sexo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="ddlSexo" runat="server" Height="22px" Width="177px">
-        </asp:DropDownList>
-    
-    </div>
-    <div style="font-weight: bold">
-    
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Detalle</div>
-
-        <div>
-        
+    <div class="container" style="margin-right: 20%">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Persona</h1>
+                 <hr/>
+            </div>
         </div>
-       
-        <div>
+    </div>
         
-             <asp:GridView ID="dgvPersonas" runat="server" 
+    <div class="container mt-3 mb-3">
+      <label class="form-label">Nombre</label>
+         <asp:TextBox class="form-control" AutoPostBack="true" OnTextChanged="txtNombre_TextChanged" ID="txtNombre" runat="server" Width="500px" ViewStateMode="Disabled"></asp:TextBox>
+   </div>
+
+    <div class="container mt-3 mb-3">
+       <label class="form-label">Sexo</label>
+        <asp:DropDownList ID="ddlSexo" runat="server" class="form-control" Width="500px"></asp:DropDownList>
+    </div>
+                 <div class="container mt-3 mb-3">
+       <label class="form-label">Estado Civil</label>
+        <asp:DropDownList ID="ddlEstadoCivil" runat="server" class="form-control" Width="500px"></asp:DropDownList>
+    </div>
+             <div class="container">
+             <asp:Button ID="btnBuscar" Class="btn btn-secondary" runat="server" Text="Buscar" onclick="btnBuscar_Click" ViewStateMode="Disabled" />
+              <asp:Button ID="btnAgregar" Class="btn btn-success" runat="server" Text="Agregar" onclick="btnAgregar_Click" ViewStateMode="Disabled" />
+             </div>
+
+               <div class="container-fluid"> 
+                 <div class="row">
+                <div class="col-sm-10  justify-content-center">
+                  <h1 class="text-center">Detalle </h1>.
+            </div>
+        </div>
+    </div>
+     <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+             <asp:GridView CssClass="table table-bordered table-condensed" ID="dgvPersonas" runat="server" 
                 AllowPaging="True" AutoGenerateColumns="False" DataSourceID="DataSourcePersona" 
-                Width="1067px" CellPadding="3" GridLines="Horizontal" 
-                onrowcommand="dgvPersonas_RowCommand" BackColor="White" 
-                BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
-                ViewStateMode="Disabled">
-                <AlternatingRowStyle BackColor="#F7F7F7" />
+                Width="1067px" CellPadding="4" GridLines="None" 
+                onrowcommand="dgvPersonas_RowCommand" 
+                ViewStateMode="Disabled" ForeColor="#333333"  PageSize="5" AllowSorting="True">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="strClaveUnica" HeaderText="Clave Unica" 
                         ReadOnly="True" SortExpression="strClaveUnica" />
@@ -66,6 +76,7 @@
                         SortExpression="CatSexo" />
                      <asp:BoundField DataField="dteFechaNacimiento" HeaderText="Fecha de Nacimiento" 
                         ReadOnly="True" SortExpression="dteFechaNacimiento" />
+
                     <asp:TemplateField HeaderText="Editar">
                         <ItemTemplate>
                                     <asp:ImageButton runat="server" ID="imgEditar" CommandName="Editar" CommandArgument='<%#Bind("id") %>' ImageUrl="~/Images/editrecord_16x16.png" />
@@ -91,18 +102,23 @@
                     
                     </asp:TemplateField>
                 </Columns>
-                <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                 <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
-        
         </div>
+          </div>
+        </div>
+         
+        </div>
+
     <asp:LinqDataSource ID="DataSourcePersona" runat="server" 
         ContextTypeName="UTTT.Ejemplo.Linq.Data.Entity.DcGeneralDataContext" 
         onselecting="DataSourcePersona_Selecting" 

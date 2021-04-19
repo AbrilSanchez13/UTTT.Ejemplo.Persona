@@ -19,30 +19,30 @@ namespace UTTT.Ejemplo.Persona
         {
 
            
-            if (!IsPostBack)
-            {
-                this.setGridView();
-                CtrlSexo ctrlSexo = new CtrlSexo();
-                List<Object> listaObject = ctrlSexo.consultarLista(null);
-                List<UTTT.Ejemplo.Persona.Data.Entity.CatSexo> listaSexo = new List<CatSexo>();
-                for (int i = 0; i < listaObject.Count; i++)
-                {
-                    CatSexo tempCatSexo = (CatSexo)listaObject[i];
-                    listaSexo.Add(tempCatSexo);
+        //    if (!IsPostBack)
+        //    {
+        //        this.setGridView();
+        //        CtrlSexo ctrlSexo = new CtrlSexo();
+        //        List<Object> listaObject = ctrlSexo.consultarLista(null);
+        //        List<UTTT.Ejemplo.Persona.Data.Entity.CatSexo> listaSexo = new List<CatSexo>();
+        //        for (int i = 0; i < listaObject.Count; i++)
+        //        {
+        //            CatSexo tempCatSexo = (CatSexo)listaObject[i];
+        //            listaSexo.Add(tempCatSexo);
 
-                }
+        //        }
 
-                CatSexo catSexoInicio = new CatSexo();
-                catSexoInicio.Id = -1;
-                catSexoInicio.StrValor = "";
-                listaSexo.Insert(0, catSexoInicio);
-                this.dblSexo.DataSource = listaSexo;
-                this.dblSexo.DataValueField = "Id";
-                // Hace el enlace del campo au_fname para el texto
-                this.dblSexo.DataTextField = "StrValor";
-                // Llena el DropDownList con los datos de la fuente de datos
-                this.dblSexo.DataBind();
-            }
+        //        CatSexo catSexoInicio = new CatSexo();
+        //        catSexoInicio.Id = -1;
+        //        catSexoInicio.StrValor = "";
+        //        listaSexo.Insert(0, catSexoInicio);
+        //        this.dblSexo.DataSource = listaSexo;
+        //        this.dblSexo.DataValueField = "Id";
+        //        // Hace el enlace del campo au_fname para el texto
+        //        this.dblSexo.DataTextField = "StrValor";
+        //        // Llena el DropDownList con los datos de la fuente de datos
+        //        this.dblSexo.DataBind();
+        //    }
         }
 
         private void setGridView()
