@@ -36,21 +36,21 @@ namespace UTTT.Ejemplo.Linq.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5103.site4now.net;Initial Catalog=DB_A71AFC_abrilsanchez;Persit Se" +
-            "curity Info=True; User Id=DB_A71AFC_abrilsanchez_admin;Password=1KERbadill0")]
-        public string DB_A71AFC_abrilsanchezConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Persona;Integrated Security=True")]
+        public string PersonaConnectionString1 {
             get {
-                return ((string)(this["DB_A71AFC_abrilsanchezConnectionString"]));
+                return ((string)(this["PersonaConnectionString1"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Persona;Integrated Security=True")]
-        public string PersonaConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5104.site4now.net;Initial Catalog=db_a71afc_abrilsanchez;User ID=d" +
+            "b_a71afc_abrilsanchez_admin;Password=1KERbadill0")]
+        public string DB_A71AFC_abrilsanchezConnectionString {
             get {
-                return ((string)(this["PersonaConnectionString1"]));
+                return ((string)(this["DB_A71AFC_abrilsanchezConnectionString"]));
             }
         }
     }

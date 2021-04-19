@@ -24,8 +24,9 @@ namespace UTTT.Ejemplo.Persona.Control.Ctrl
         {
             try
             {
-                SqlConnection conexion = new SqlConnection("Data Source=SQL5103.site4now.net;Initial Catalog=DB_A71AFC_abrilsanchez;User Id=DB_A71AFC_abrilsanchez_admin;Password=1KERbadill0");
+                SqlConnection conexion = new SqlConnection("Data Source=SQL5104.site4now.net;Initial Catalog=db_a71afc_abrilsanchez;User Id=db_a71afc_abrilsanchez_admin;Password=1KERbadill0");
                 return conexion;
+
             }
             catch (Exception _e)
             { 

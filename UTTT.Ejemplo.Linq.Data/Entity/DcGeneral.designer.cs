@@ -22,7 +22,7 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Persona")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_a71afc_abrilsanchez")]
 	public partial class DcGeneralDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -51,7 +51,7 @@ namespace UTTT.Ejemplo.Linq.Data.Entity
     #endregion
 		
 		public DcGeneralDataContext() : 
-				base(global::UTTT.Ejemplo.Linq.Data.Properties.Settings.Default.PersonaConnectionString1, mappingSource)
+				base(global::UTTT.Ejemplo.Linq.Data.Properties.Settings.Default.DB_A71AFC_abrilsanchezConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
